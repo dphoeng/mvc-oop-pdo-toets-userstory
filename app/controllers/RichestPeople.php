@@ -39,7 +39,7 @@ class RichestPeople extends Controller
 		$this->richestPersonModel->deleteRichestPerson($id);
 
 		$data = [
-			'deleteStatus' => "Het record met id = $id is verwijdert"
+			'deleteStatus' => "Het record met id = $id is succesvol verwijdert"
 		];
 
 		$this->view("richestPeople/delete", $data);
