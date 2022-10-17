@@ -27,6 +27,7 @@ class RichestPeople extends Controller
 
 		// data die wordt doorgestuurd naar de view
 		$data = [
+			"title" => "De vijf rijkste mensen ter wereld",
 			"rows" => $rows
 		];
 		$this->view("richestPeople/index", $data);

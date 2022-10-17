@@ -16,7 +16,7 @@ class RichestPerson
 		return $this->db->resultSet();
 	}
 
-	public function getSingleCountry($id)
+	public function getSinglePerson($id)
 	{
 		$this->db->query("SELECT * FROM RichestPeople WHERE Id = :id");
 		$this->db->bind(":id", $id, PDO::PARAM_INT);
