@@ -9,7 +9,7 @@
 </head>
 
 <body>
-	<?= $data["title"]; ?>
+	<h1><?= $data["title"]; ?></h1>
 	<table>
 		<thead>
 			<th>Naam</th>
