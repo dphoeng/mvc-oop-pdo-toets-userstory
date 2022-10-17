@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 17, 2022 at 09:39 AM
+-- Generation Time: Oct 17, 2022 at 09:48 AM
 -- Server version: 5.7.31
 -- PHP Version: 8.1.10
 
@@ -35,18 +35,18 @@ CREATE TABLE IF NOT EXISTS `richestpeople` (
   `MyAge` tinyint(4) NOT NULL,
   `Company` varchar(200) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `richestpeople`
 --
 
 INSERT INTO `richestpeople` (`Id`, `Name`, `Networth`, `MyAge`, `Company`) VALUES
-(11, 'Elon Musk', '261000000000', 50, 'Tesla'),
-(12, 'Jeff Bezos', '183000000000', 58, 'Amazon'),
-(13, 'Bernard Arnault', '142000000000', 73, 'Louis Vuitton Moët Hennessy'),
-(14, 'Bill Gates', '130000000000', 66, 'Microsoft'),
-(15, 'Warren Buffet', '126000000000', 91, 'Berkshire Hathaway');
+(16, 'Elon Musk', '261000000000', 50, 'Tesla'),
+(17, 'Jeff Bezos', '183000000000', 58, 'Amazon'),
+(18, 'Bernard Arnault', '142000000000', 73, 'Louis Vuitton Mo&euml;t Hennessy'),
+(19, 'Bill Gates', '130000000000', 66, 'Microsoft'),
+(20, 'Warren Buffet', '126000000000', 91, 'Berkshire Hathaway');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -10,7 +10,7 @@ define('DB_NAME', 'mvc-oop-toets');
 define('APPROOT', dirname(dirname(__FILE__)));
 
 // URL van de site
-define('URLROOT', 'mvc-oop-toets.com');
+define('URLROOT', 'http://mvc-oop-toets.com');
 
 
 // site naam

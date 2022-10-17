@@ -21,7 +21,7 @@ class RichestPeople extends Controller
 							<td>$value->Networth</td>
 							<td>$value->MyAge</td>
 							<td>$value->Company</td>
-							<td><a href='/richestPeople/delete/$value->Id'>delete</a></td>
+							<td><a href='" . URLROOT . "/richestPeople/delete/$value->Id'>delete</a></td>
 					</tr>";
 		}
 
@@ -39,10 +39,10 @@ class RichestPeople extends Controller
 		$this->richestPersonModel->deleteRichestPerson($id);
 
 		$data = [
-			'deleteStatus' => "Het record met id = $id is succesvol verwijdert"
+			'deleteStatus' => "Het record is succesvol verwijdert"
 		];
 
 		$this->view("richestPeople/delete", $data);
-		header('Refresh:2; url=/richestPeople/index');
+		header('Refresh:2; url=' . URLROOT . '/richestPeople/index');
 	}
 }
