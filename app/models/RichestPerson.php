@@ -12,7 +12,7 @@ class RichestPerson
 
 	public function getRichestPeople()
 	{
-		$this->db->query('SELECT * FROM RichestPeople');
+		$this->db->query('SELECT * FROM RichestPeople ORDER BY Networth DESC');
 		return $this->db->resultSet();
 	}
 
@@ -23,7 +23,7 @@ class RichestPerson
 		return $this->db->single();
 	}
 
-	public function deleteCountry($id)
+	public function deleteRichestPerson($id)
 	{
 		$this->db->query("DELETE FROM `RichestPeople` WHERE Id = :id");
 		$this->db->bind(":id", $id, PDO::PARAM_INT);

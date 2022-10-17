@@ -11,7 +11,7 @@ define('APPROOT', dirname(dirname(__FILE__)));
 
 // URL van de site
 define('URLROOT', 'mvc-oop-toets.com');
-+
+
 
 // site naam
 define('SITENAME', 'MVC');
