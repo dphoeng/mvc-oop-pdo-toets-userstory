@@ -17,7 +17,7 @@ $data = $data ?? [];
 				<label for="kilometerstand">Kilometerstand</label>
 			</div>
 			<div class="column">
-				<input type="number" name="kilometerstand" id="kilometerstand">
+				<input type="number" name="kilometerstand" id="kilometerstand" placeholder="[max (<?= $data["max"]; ?>)]">
 				<input type="submit" name="submit" id="submit" value="Voer In">
 			</div>
 		</div>

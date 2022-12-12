@@ -40,7 +40,8 @@ class WagenPark extends Controller
 			"title" => "Invoeren Kilometerstand",
 			"error" => "",
 			"type" => $wagen->Type,
-			"kenteken" => $wagen->Kenteken
+			"kenteken" => $wagen->Kenteken,
+			"max" => $wagen->KmStand
 		];
 
 
@@ -53,13 +54,14 @@ class WagenPark extends Controller
 					"error" => "",
 					"kilometerstand" => $_POST['kilometerstand'],
 					"type" => $wagen->Type,
-					"kenteken" => $wagen->Kenteken
+					"kenteken" => $wagen->Kenteken,
+					"max" => $wagen->KmStand
 				];
 
 				$data = $this->validateAdd($data);
 
 				if (empty($data['topicError'])) {
-					$result = $this->lesModel->createKilometerstand($_POST, $id);
+					$result = $this->wagenParkModel->createKilometerstand($_POST, $id);
 					if ($result)
 						echo "De nieuwe kilometerstand is succesvol toegevoegd";
 					else
@@ -69,7 +71,8 @@ class WagenPark extends Controller
 					header("Refresh:3; url=" . URLROOT . "/wagenpark/index/");
 				}
 			} catch (PDOException $e) {
-				echo "De nieuwe kilometerstand is niet toegevoegd, probeer het opnieuw";
+				echo $e;
+				echo "De nieuwe kilometerstand is niet toegevoegd, probeer het opnieuww";
 				header("Refresh:3; url=" . URLROOT . "/wagenpark/index/");
 			}
 		}
