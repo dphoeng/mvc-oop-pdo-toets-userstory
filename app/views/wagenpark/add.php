@@ -9,6 +9,7 @@ $data = $data ?? [];
 <body>
 	<h1><?= $data['title']; ?></h1>
 	<hr>
+	<h2>[<?= $data['type']; ?>][<?= $data['kenteken']; ?>]</h2>
 	<form action="<?= URLROOT; ?>/wagenpark/add/<?= $data["id"] ?>" method="post">
 		<div class="error"><?= $data['error']; ?></div>
 		<div class="row">

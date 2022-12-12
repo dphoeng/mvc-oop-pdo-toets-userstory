@@ -33,11 +33,16 @@ class WagenPark extends Controller
 
 	public function add($id = null)
 	{
+		$wagen = $this->wagenParkModel->getWagenById($id);
+
 		$data = [
 			"id" => $id,
 			"title" => "Invoeren Kilometerstand",
-			"error" => ""
+			"error" => "",
+			"type" => $wagen->Type,
+			"kenteken" => $wagen->Kenteken
 		];
+
 
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			try {
@@ -46,7 +51,9 @@ class WagenPark extends Controller
 					"id" => $id,
 					"title" => "Invoeren Kilometerstand",
 					"error" => "",
-					"kilometerstand" => $_POST['kilometerstand']
+					"kilometerstand" => $_POST['kilometerstand'],
+					"type" => $wagen->Type,
+					"kenteken" => $wagen->Kenteken
 				];
 
 				$data = $this->validateAdd($data);
