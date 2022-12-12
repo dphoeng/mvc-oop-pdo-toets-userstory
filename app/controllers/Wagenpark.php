@@ -19,7 +19,7 @@ class WagenPark extends Controller
 			$rows .= "<tr>
 							<td>$value->Type</td>
 							<td>$value->Kenteken</td>
-							<td><a href='" . URLROOT . "/wagenpark/add/$value->Id'>+</a></td>
+							<td class='add'><a href='" . URLROOT . "/wagenpark/add/$value->Id'><img src='" . URLROOT . "/img/cross.png' alt='+'></a></td>
 					</tr>";
 		}
 
