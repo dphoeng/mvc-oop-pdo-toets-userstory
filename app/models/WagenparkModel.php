@@ -16,9 +16,9 @@ class WagenparkModel
 		return $this->db->resultSet();
 	}
 
-	public function getWagenById($id)
+	public function getLatestKilometerstandById($id)
 	{
-		$this->db->query('SELECT * FROM `Kilometerstand` WHERE Id = :id');
+		$this->db->query('SELECT * FROM `Kilometerstand` WHERE Id = :id LIMIT 1 ORDER BY KmStand DESC');
 		$this->db->bind(":id", $id, PDO::PARAM_INT);
 		return $this->db->single();
 	}
