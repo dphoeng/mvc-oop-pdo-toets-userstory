@@ -60,19 +60,19 @@ class WagenPark extends Controller
 
 				$data = $this->validateAdd($data);
 
-				if (empty($data['topicError'])) {
+				if (empty($data['error'])) {
 					$result = $this->wagenParkModel->createKilometerstand($_POST, $id);
 					if ($result)
-						echo "De nieuwe kilometerstand is succesvol toegevoegd";
+						$data['error'] = "De nieuwe kilometerstand is succesvol toegevoegd";
 					else
-						echo "De nieuwe kilometerstand is niet succesvol toegevoegd";
+						$data['error'] = "De nieuwe kilometerstand is niet succesvol toegevoegd";
 					header("Refresh:3; url=" . URLROOT . "/wagenpark/index");
 				} else {
 					header("Refresh:3; url=" . URLROOT . "/wagenpark/index/");
 				}
 			} catch (PDOException $e) {
-				echo $e;
-				echo "De nieuwe kilometerstand is niet toegevoegd, probeer het opnieuww";
+				// echo $e;
+				$data['error'] = "De nieuwe kilometerstand is niet toegevoegd, probeer het opnieuw";
 				header("Refresh:3; url=" . URLROOT . "/wagenpark/index/");
 			}
 		}
