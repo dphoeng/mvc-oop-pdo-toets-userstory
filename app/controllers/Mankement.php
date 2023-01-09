@@ -36,7 +36,8 @@ class Mankement extends Controller
 			"email" => $instructeur->Email,
 			"kenteken" => $instructeur->Kenteken,
 			"type" => $instructeur->Type,
-			"rows" => $rows
+			"rows" => $rows,
+			"id" => $autoId
 		];
 		$this->view("mankement/index", $data);
 	}

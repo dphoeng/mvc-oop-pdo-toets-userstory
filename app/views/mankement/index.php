@@ -26,7 +26,7 @@ $data = $data ?? [];
 			<?= $data["rows"]; ?>
 		</tbody>
 	</table>
-	<button></button>
+	<a href="<?= URLROOT; ?>/mankement/add/<?= $data["id"] ?>"><button>Mankement Toevoegen</button></a>
 </body>
 
 <?php
