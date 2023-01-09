@@ -19,7 +19,7 @@ class MankementModel
 
 	public function getMankementenByAutoId($id)
 	{
-		$this->db->query('SELECT man.Datum, man.Mankement FROM `Mankement` man INNER JOIN `Auto` aut ON man.AutoId = aut.Id WHERE aut.Id = :id');
+		$this->db->query('SELECT man.Datum, man.Mankement FROM `Mankement` man INNER JOIN `Auto` aut ON man.AutoId = aut.Id WHERE aut.Id = :id ORDER BY man.Datum DESC');
 		$this->db->bind(":id", $id, PDO::PARAM_INT);
 		return $this->db->resultSet();
 	}

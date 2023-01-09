@@ -6,13 +6,16 @@ $data = $data ?? [];
 ?>
 
 <body>
-	<h1><?= $data['title']; ?></h1>
-	<br>
-	<h2>Auto van de instructeur: <?= $data['naam']; ?></h2>
-	<h2>E-mailadres: <?= $data['email']; ?></h2>
-	<h2>Kenteken Auto: <?php if ($data['kenteken']) {
+	<u>
+		<h1><?= $data['title']; ?></h1>
+	</u>
+	<h3>Auto van de instructeur: <?= $data['naam']; ?></h3>
+	<h3>E-mailadres: <?= $data['email']; ?></h3>
+	<h3>Kenteken Auto: <?php if ($data['kenteken']) {
 							echo $data['kenteken'] . "-" . $data['type'];
-						}  ?></h2>
+						} else {
+							echo "Geen autos";
+						} ?></h3>
 
 	<table>
 		<thead>
@@ -23,6 +26,7 @@ $data = $data ?? [];
 			<?= $data["rows"]; ?>
 		</tbody>
 	</table>
+	<button></button>
 </body>
 
 <?php
