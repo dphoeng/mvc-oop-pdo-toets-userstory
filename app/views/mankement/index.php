@@ -11,9 +11,8 @@ $data = $data ?? [];
 
 	<table>
 		<thead>
-			<th>Type</th>
-			<th>Kenteken</th>
-			<th>KmStand Toevoegen</th>
+			<th>Datum</th>
+			<th>Mankement</th>
 		</thead>
 		<tbody>
 			<?= $data["rows"]; ?>
