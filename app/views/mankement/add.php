@@ -10,7 +10,7 @@ $data = $data ?? [];
 	<u>
 		<h1><?= $data['title']; ?></h1>
 	</u>
-	<h2>[<?= $data['type']; ?>][<?= $data['kenteken']; ?>]</h2>
+	<h2>[<?= $data['kenteken']; ?>][<?= $data['type']; ?>]</h2>
 	<form action="<?= URLROOT; ?>/mankement/add/<?= $data["id"] ?>" method="post">
 		<div class="error"><?= $data['error']; ?></div>
 		<div class="row">
