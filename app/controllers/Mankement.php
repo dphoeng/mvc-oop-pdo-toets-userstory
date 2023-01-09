@@ -9,10 +9,18 @@ class Mankement extends Controller
 		$this->mankementModel = $this->model('MankementModel');
 	}
 
-	public function index()
+	public function index($id = 1)
 	{
 		// haalt de gegevens uit de database via the model
-		$record = $this->mankementModel->getMankementen();
+		$record = $this->mankementModel->getAutoByInstructeurId($id);
+
+		$naam = $record->Naam;
+		$email = $record->Email;
+		$autoId = $record->AutoId;
+		$kenteken = $record->Kenteken;
+
+		var_dump($record);
+		exit;
 
 		$rows = '';
 		foreach ($record as $value) {
@@ -26,6 +34,7 @@ class Mankement extends Controller
 		// data die wordt doorgestuurd naar de view
 		$data = [
 			"title" => "Overzicht Mankementen",
+			// "naam" = > $record,
 			"rows" => $rows
 		];
 		$this->view("mankement/index", $data);

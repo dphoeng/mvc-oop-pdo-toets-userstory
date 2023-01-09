@@ -10,9 +10,10 @@ class MankementModel
 		$this->db = new Database();
 	}
 
-	public function getMankementenByInstructeurId($id)
+	public function getAutoByInstructeurId($id)
 	{
-		$this->db->query('SELECT * FROM `Auto` aut INNER JOIN `Instructeur` ins ON aut.InstructeurId = ins.Id WHERE ins.Id = :id');
-		return $this->db->resultSet();
+		$this->db->query('SELECT aut.Id as AutoId, aut.Kenteken as Kenteken, ins.Naam as Naam, ins.Email as Email FROM `Auto` aut RIGHT JOIN `Instructeur` ins ON aut.InstructeurId = ins.Id WHERE ins.Id = :id LIMIT 1');
+		$this->db->bind(":id", $id, PDO::PARAM_INT);
+		return $this->db->single();
 	}
 }
