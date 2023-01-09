@@ -23,4 +23,11 @@ class MankementModel
 		$this->db->bind(":id", $id, PDO::PARAM_INT);
 		return $this->db->resultSet();
 	}
+
+	public function getAutoById($id)
+	{
+		$this->db->query('SELECT * FROM `Auto` WHERE Id = :id');
+		$this->db->bind(":id", $id, PDO::PARAM_INT);
+		return $this->db->single();
+	}
 }
