@@ -10,7 +10,7 @@ define('DB_NAME', 'mvc');
 define('APPROOT', dirname(dirname(__FILE__)));
 
 // URL van de site
-define('URLROOT', 'http://mvc-oop-pdo-proeftoets-userstory.com');
+define('URLROOT', 'http://mvc-oop-pdo-toets-userstory.com');
 
 
 // site naam
