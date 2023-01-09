@@ -46,8 +46,8 @@ class Mankement extends Controller
 	{
 		$instructeur = $this->mankementModel->getAutoByInstructeurId($id);
 
-		if (!$instructeur) {
-			header("Location: " . URLROOT . "/mankement/index/");
+		if (!$instructeur->Type) {
+			header("Location: " . URLROOT . "/mankement/index/" . $id);
 		}
 
 		$data = [
@@ -75,19 +75,19 @@ class Mankement extends Controller
 				$data = $this->validateAdd($data);
 
 				if (empty($data['error'])) {
-					$result = $this->mankementModel->createMankement($_POST, $id);
+					$result = $this->mankementModel->createMankement($_POST, $instructeur->AutoId);
 					if ($result)
 						$data['error'] = "Het nieuwe mankement is succesvol toegevoegd";
 					else
 						$data['error'] = "Het nieuwe mankement is niet succesvol toegevoegd";
-					header("Refresh:3; url=" . URLROOT . "/mankement/index");
+					header("Refresh:3; url=" . URLROOT . "/mankement/index/" . $id);
 				} else {
-					header("Refresh:3; url=" . URLROOT . "/mankement/index/");
+					header("Refresh:3; url=" . URLROOT . "/mankement/index/" . $id);
 				}
 			} catch (PDOException $e) {
 				// echo $e;
 				$data['error'] = "Het nieuwe mankement is niet succesvol toegevoegd";
-				header("Refresh:3; url=" . URLROOT . "/mankement/index/");
+				header("Refresh:3; url=" . URLROOT . "/mankement/index/" . $id);
 			}
 		}
 
