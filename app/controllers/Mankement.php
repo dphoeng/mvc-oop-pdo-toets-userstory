@@ -82,7 +82,7 @@ class Mankement extends Controller
 						$data['error'] = "Het nieuwe mankement is niet succesvol toegevoegd";
 					header("Refresh:3; url=" . URLROOT . "/mankement/index/" . $id);
 				} else {
-					header("Refresh:3; url=" . URLROOT . "/mankement/index/" . $id);
+					header("Refresh:3; url=" . URLROOT . "/mankement/add/" . $id);
 				}
 			} catch (PDOException $e) {
 				// echo $e;
