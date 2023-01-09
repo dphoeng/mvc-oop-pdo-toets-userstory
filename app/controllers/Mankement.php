@@ -9,7 +9,7 @@ class Mankement extends Controller
 		$this->mankementModel = $this->model('MankementModel');
 	}
 
-	public function index($id = 1)
+	public function index($id = null)
 	{
 		// haalt de gegevens uit de database via the model
 		$instructeur = $this->mankementModel->getAutoByInstructeurId($id);
@@ -46,6 +46,10 @@ class Mankement extends Controller
 	{
 		$wagen = $this->mankementModel->getAutoById($id);
 
+		if (!$wagen) {
+			header("Location: " . URLROOT . "/mankement/index/");
+		}
+
 		$data = [
 			"id" => $id,
 			"title" => "Invoeren Mankement",
@@ -57,33 +61,33 @@ class Mankement extends Controller
 
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			try {
+				$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
 				$data = [
 					"id" => $id,
-					"title" => "Invoeren Kilometerstand",
+					"title" => "Invoeren Mankement",
 					"error" => "",
-					"kilometerstand" => $_POST['kilometerstand'],
+					"mankement" => $_POST['mankement'],
 					"type" => $wagen->Type,
 					"kenteken" => $wagen->Kenteken,
-					"max" => $wagen->KmStand
 				];
 
 				$data = $this->validateAdd($data);
 
 				if (empty($data['error'])) {
-					$result = $this->wagenParkModel->createKilometerstand($_POST, $id);
+					$result = $this->mankementModel->createKilometerstand($_POST, $id);
 					if ($result)
-						$data['error'] = "De nieuwe kilometerstand is succesvol toegevoegd";
+						$data['error'] = "Het nieuwe mankement is succesvol toegevoegd";
 					else
-						$data['error'] = "De nieuwe kilometerstand is niet succesvol toegevoegd";
-					header("Refresh:3; url=" . URLROOT . "/wagenpark/index");
+						$data['error'] = "Het nieuwe mankement is niet succesvol toegevoegd";
+					header("Refresh:3; url=" . URLROOT . "/mankement/index");
 				} else {
-					header("Refresh:3; url=" . URLROOT . "/wagenpark/index/");
+					header("Refresh:3; url=" . URLROOT . "/mankement/index/");
 				}
 			} catch (PDOException $e) {
 				// echo $e;
-				$data['error'] = "De nieuwe kilometerstand is niet toegevoegd, probeer het opnieuw";
-				header("Refresh:3; url=" . URLROOT . "/wagenpark/index/");
+				$data['error'] = "Het nieuwe mankement is niet succesvol toegevoegd";
+				header("Refresh:3; url=" . URLROOT . "/mankement/index/");
 			}
 		}
 
@@ -92,10 +96,8 @@ class Mankement extends Controller
 
 	private function validateAdd($data)
 	{
-		$result = $this->wagenParkModel->getLatestKilometerstandById($data['id']);
-
-		if ($result->KmStand > $data['kilometerstand']) {
-			$data['error'] = "De nieuwe kilometerstand is niet toegevoegd, probeer het opnieuw";
+		if (strlen($data['mankement']) > 50) {
+			$data['error'] = "Het nieuwe mankement is meer dan 50 tekens lang en is niet toegoevoegd, probeer het opnieuw";
 		}
 		return $data;
 	}

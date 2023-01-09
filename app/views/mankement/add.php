@@ -7,8 +7,9 @@ $data = $data ?? [];
 ?>
 
 <body>
-	<h1><?= $data['title']; ?></h1>
-	<hr>
+	<u>
+		<h1><?= $data['title']; ?></h1>
+	</u>
 	<h2>[<?= $data['type']; ?>][<?= $data['kenteken']; ?>]</h2>
 	<form action="<?= URLROOT; ?>/mankement/add/<?= $data["id"] ?>" method="post">
 		<div class="error"><?= $data['error']; ?></div>
@@ -17,7 +18,7 @@ $data = $data ?? [];
 				<label for="mankement">Mankement</label>
 			</div>
 			<div class="column">
-				<input type="text" name="mankement" id="mankement" placeholder="">
+				<textarea name="mankement" id="mankement" placeholder="" rows="7" cols="40"></textarea>
 				<input type="submit" name="submit" id="submit" value="Voer In">
 			</div>
 		</div>

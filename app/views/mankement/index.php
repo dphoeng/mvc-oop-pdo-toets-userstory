@@ -9,10 +9,10 @@ $data = $data ?? [];
 	<u>
 		<h1><?= $data['title']; ?></h1>
 	</u>
-	<h3>Auto van de instructeur: <?= $data['naam']; ?></h3>
-	<h3>E-mailadres: <?= $data['email']; ?></h3>
+	<h3>Auto van de instructeur: [<?= $data['naam']; ?>]</h3>
+	<h3>E-mailadres: [<?= $data['email']; ?>]</h3>
 	<h3>Kenteken Auto: <?php if ($data['kenteken']) {
-							echo $data['kenteken'] . "-" . $data['type'];
+							echo "[" . $data['kenteken'] . "]-[" . $data['type'] . "]";
 						} else {
 							echo "Geen autos";
 						} ?></h3>
