@@ -37,16 +37,16 @@ class Mankement extends Controller
 			"kenteken" => $instructeur->Kenteken,
 			"type" => $instructeur->Type,
 			"rows" => $rows,
-			"id" => $autoId
+			"id" => $id
 		];
 		$this->view("mankement/index", $data);
 	}
 
 	public function add($id = null)
 	{
-		$wagen = $this->mankementModel->getAutoById($id);
+		$instructeur = $this->mankementModel->getAutoByInstructeurId($id);
 
-		if (!$wagen) {
+		if (!$instructeur) {
 			header("Location: " . URLROOT . "/mankement/index/");
 		}
 
@@ -54,8 +54,8 @@ class Mankement extends Controller
 			"id" => $id,
 			"title" => "Invoeren Mankement",
 			"error" => "",
-			"type" => $wagen->Type,
-			"kenteken" => $wagen->Kenteken,
+			"type" => $instructeur->Type,
+			"kenteken" => $instructeur->Kenteken,
 		];
 
 
@@ -68,14 +68,14 @@ class Mankement extends Controller
 					"title" => "Invoeren Mankement",
 					"error" => "",
 					"mankement" => $_POST['mankement'],
-					"type" => $wagen->Type,
-					"kenteken" => $wagen->Kenteken,
+					"type" => $instructeur->Type,
+					"kenteken" => $instructeur->Kenteken,
 				];
 
 				$data = $this->validateAdd($data);
 
 				if (empty($data['error'])) {
-					$result = $this->mankementModel->createKilometerstand($_POST, $id);
+					$result = $this->mankementModel->createMankement($_POST, $id);
 					if ($result)
 						$data['error'] = "Het nieuwe mankement is succesvol toegevoegd";
 					else

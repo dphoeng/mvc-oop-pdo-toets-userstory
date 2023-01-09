@@ -30,4 +30,14 @@ class MankementModel
 		$this->db->bind(":id", $id, PDO::PARAM_INT);
 		return $this->db->single();
 	}
+
+	public function createMankement($post, $id)
+	{
+		$this->db->query("INSERT INTO `Mankement` (Id, AutoId, Datum, Mankement) VALUES (:Id, :AutoId, :Datum, :Mankement)");
+		$this->db->bind(":Id", NULL, PDO::PARAM_INT);
+		$this->db->bind(":AutoId", $id, PDO::PARAM_INT);
+		$this->db->bind(":Datum", date("Y-m-d"), PDO::PARAM_STR);
+		$this->db->bind(":Mankement", $post["mankement"], PDO::PARAM_STR);
+		return $this->db->execute();
+	}
 }
